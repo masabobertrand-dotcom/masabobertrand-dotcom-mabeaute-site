@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma'Beauté | Boutique de Cosmétiques à Montréal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables et reset */
+        :root {
+            --primary: #9c27b0;
+            --secondary: #e91e63;
+            --accent: #ff9800;
+            --accent-soft: #f3e5f5;
+            --accent-dark: #7b1fa2;
+            --text-main: #333333;
+            --text-soft: #666666;
+            --light: #fafafa;
+            --white: #ffffff;
+            --border: #e1bee7;
+            --shadow: 0 8px 25px rgba(156, 39, 176, 0.08);
+            --shadow-hover: 0 15px 35px rgba(156, 39, 176, 0.15);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        
+        /* HEADER FIXE */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(156, 39, 176, 0.05);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        /* NAVIGATION */
+        .nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            background: none;
+            border: none;
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* ICONES HEADER */
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .header-icons i {
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .header-icons i:hover {
+            color: var(--secondary);
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--secondary);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* BANNIÈRE D'INFORMATIONS */
+        .info-banner {
+            background: linear-gradient(135deg, var(--primary), var(--accent-dark));
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+        
+        .info-banner i {
+            margin-right: 8px;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%239c27b0" opacity="0.05"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 span {
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        
+        /* BOUTONS */
+        .btn {
+            padding: 15px 35px;
+            border-radius: 30px;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(156, 39, 176, 0.05);
+        }
+        
+        /* SECTION PRODUITS */
+        main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .section-title p {
+            color: var(--text-soft);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 20px auto;
+        }
+        
+        /* FILTRES PRODUITS */
+        .product-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            color: var(--text-soft);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+        }
+        
+        /* GRILLE DE PRODUITS */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .product-badge.new {
+            background: var(--accent);
+        }
+        
+        .product-badge.sale {
+            background: #4caf50;
+        }
+        
+        .product-badge.best {
+            background: var(--primary);
+        }
+        
+        .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image i {
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-category {
+            color: var(--secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .product-description {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .product-rating {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .price::before {
+            content: '$';
+        }
+        
+        .original-price {
+            font-size: 1rem;
+            color: var(--text-soft);
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        
+        .original-price::before {
+            content: '$';
+        }
+        
+        .add-to-cart {
+            background: var(--accent-soft);
+            border: none;
+            color: var(--primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        /* MODAL PRODUIT */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .product-modal {
+            background: white;
+            border-radius: var(--radius);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-soft);
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .modal-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+        
+        .modal-image {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .modal-image i {
+            font-size: 8rem;
+            color: var(--primary);
+        }
+        
+        .modal-details {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 40px;
+        }
+        
+        .modal-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .modal-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .modal-price::before {
+            content: '$';
+        }
+        
+        .modal-description {
+            color: var(--text-soft);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .quantity {
+            font-size: 1.2rem;
+            font-weight: 600;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        /* PANIER */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+            z-index: 1500;
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            padding: 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-soft);
+        }
+        
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-soft);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .cart-item-price::before {
+            content: '$';
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .cart-footer {
+            padding: 25px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+        .cart-total span:last-child::before {
+            content: '$';
+        }
+        
+        /* SECTION INFORMATIONS */
+        .info-section {
+            background: linear-gradient(135deg, #f9f5ff, #f3e5f5);
+            border-radius: var(--radius);
+            padding: 50px;
+            margin: 60px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .info-box {
+            text-align: center;
+        }
+        
+        .info-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .info-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .info-box p {
+            color: var(--text-soft);
+        }
+        
+        /* SECTION HORAIRE */
+        .hours-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+        
+        .hours-section h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .hour-item:last-child {
+            border-bottom: none;
+        }
+        
+        .day {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .time {
+            color: var(--text-soft);
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .status.open {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .status.closed {
+            background: #f44336;
+            color: white;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 40px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .contact-info i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .site-header {
+                padding: 0 20px;
+                height: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .nav {
+                gap: 20px;
+            }
+            
+            .modal-content {
+                flex-direction: column;
+            }
+            
+            .modal-details {
+                padding: 40px 0 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .info-section {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="logo">
+            <i class="fas fa-spa"></i>
+            <span>Ma'Beauté</span>
+        </div>
+        
+        <nav class="nav">
+            <button class="nav-link" data-target="new">Nouveautés</button>
+            <button class="nav-link" data-target="makeup">Maquillage</button>
+            <button class="nav-link" data-target="skincare">Soins Visage</button>
+            <button class="nav-link" data-target="hair">Soins Cheveux</button>
+            <button class="nav-link" data-target="perfume">Parfums</button>
+            <button class="nav-link" data-target="accessories">Accessoires</button>
+        </nav>
+        
+        <div class="header-icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-user"></i>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNIÈRE D'INFORMATIONS -->
+    <div class="info-banner">
+        <i class="fas fa-truck"></i> Livraison gratuite à Montréal à partir de 50$ | 
+        <i class="fas fa-map-marker-alt"></i> 7373 Boul Langelier, Saint-Léonard | 
+        <i class="fas fa-phone"></i> (514) 253-7833
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Ma'Beauté <span>Montréal</span></h1>
+            <p>Votre destination beauté à Montréal pour des produits capillaires et cosmétiques multiculturels. Perruques, tresses, soins de la peau et maquillage de qualité professionnelle.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="cta-shop">
+                    <i class="fas fa-shopping-bag"></i> Voir les produits
+                </button>
+                <button class="btn btn-secondary" id="cta-location">
+                    <i class="fas fa-map-marker-alt"></i> Nous trouver
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- FILTRES PRODUITS -->
+        <div class="product-filters">
+            <button class="filter-btn active" data-filter="all">Tous les produits</button>
+            <button class="filter-btn" data-filter="new">Nouveautés</button>
+            <button class="filter-btn" data-filter="makeup">Maquillage</button>
+            <button class="filter-btn" data-filter="skincare">Soins Visage</button>
+            <button class="filter-btn" data-filter="hair">Soins Cheveux</button>
+            <button class="filter-btn" data-filter="accessories">Accessoires</button>
+        </div>
+
+        <!-- GRILLE DE PRODUITS -->
+        <div class="section-title">
+            <h2>Nos Produits Beauté</h2>
+            <p>Découvrez notre sélection exclusive de produits de beauté pour toutes les textures et types de peau</p>
+        </div>
+        
+        <div class="product-grid" id="product-grid">
+            <!-- Les produits seront générés par JavaScript -->
+        </div>
+
+        <!-- SECTION INFORMATIONS -->
+        <div class="info-section">
+            <div class="info-box">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Livraison Rapide</h3>
+                <p>Livraison gratuite à Montréal pour les commandes de 50$ et plus. Livraison partout au Québec.</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-undo-alt"></i>
+                <h3>Retours Faciles</h3>
+                <p>30 jours pour changer d'avis. Retours gratuits en magasin.</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-gem"></i>
+                <h3>Qualité Premium</h3>
+                <p>Produits sélectionnés avec soin parmi les meilleures marques internationales.</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-headset"></i>
+                <h3>Conseils Experts</h3>
+                <p>Notre équipe est là pour vous conseiller sur les produits adaptés à vos besoins.</p>
+            </div>
+        </div>
+
+        <!-- SECTION HORAIRES -->
+        <div class="hours-section">
+            <h3><i class="far fa-clock"></i> Nos Horaires d'Ouverture</h3>
+            <div class="hours-grid">
+                <div>
+                    <div class="hour-item">
+                        <span class="day">Lundi</span>
+                        <span class="time">10:00 - 18:00</span>
+                    </div>
+                    <div class="hour-item">
+                        <span class="day">Mardi</span>
+                        <span class="time">10:00 - 18:00</span>
+                    </div>
+                    <div class="hour-item">
+                        <span class="day">Mercredi</span>
+                        <span class="time">10:00 - 17:00 <span class="status open">Ouvert</span></span>
+                    </div>
+                    <div class="hour-item">
+                        <span class="day">Jeudi</span>
+                        <span class="time">10:00 - 18:00</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="hour-item">
+                        <span class="day">Vendredi</span>
+                        <span class="time">10:00 - 19:00</span>
+                    </div>
+                    <div class="hour-item">
+                        <span class="day">Samedi</span>
+                        <span class="time">10:00 - 17:00</span>
+                    </div>
+                    <div class="hour-item">
+                        <span class="day">Dimanche</span>
+                        <span class="time">11:00 - 16:00</span>
+                    </div>
+                    <div class="hour-item">
+                        <span class="day">Fermeture</span>
+                        <span class="time">17:00 aujourd'hui</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- PANIER LATERAL -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Votre Panier</h3>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Les articles du panier seront ajoutés ici -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total">0.00</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" id="checkout-btn">
+                <i class="fas fa-lock"></i> Commander
+            </button>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-soft);">
+                Livraison gratuite à Montréal à partir de 50$
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL PRODUIT -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="product-modal">
+            <button class="close-modal" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modal-content">
+                <!-- Contenu du modal sera rempli par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Ma'Beauté Montréal</h4>
+                <p>Votre boutique beauté à Montréal spécialisée dans les produits capillaires et cosmétiques multiculturels depuis 2015.</p>
+                <div class="social-icons" style="margin-top: 20px;">
+                    <i class="fab fa-instagram" style="font-size: 1.3rem; margin-right: 15px; cursor: pointer;"></i>
+                    <i class="fab fa-facebook" style="font-size: 1.3rem; margin-right: 15px; cursor: pointer;"></i>
+                    <i class="fab fa-tiktok" style="font-size: 1.3rem; margin-right: 15px; cursor: pointer;"></i>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Catégories</h4>
+                <a href="#" data-filter="makeup">Maquillage</a>
+                <a href="#" data-filter="skincare">Soins de la Peau</a>
+                <a href="#" data-filter="hair">Soins des Cheveux</a>
+                <a href="#" data-filter="perfume">Parfums</a>
+                <a href="#" data-filter="accessories">Accessoires</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="#">Conseils Beauté</a>
+                <a href="#">Échantillons Gratuits</a>
+                <a href="#">Livraison Express</a>
+                <a href="#">Cadeaux Emballés</a>
+                <a href="#">Programme Fidélité</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Nous Contacter</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 7373 Boul Langelier, Saint-Léonard, QC H1S 1V7</p>
+                    <p><i class="fas fa-phone"></i> (514) 253-7833</p>
+                    <p><i class="fas fa-envelope"></i> info@mabeaute-mtl.com</p>
+                    <p><i class="fas fa-globe"></i> Montréal, Québec</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ma'Beauté Montréal. Tous droits réservés. | <a href="#" style="color: rgba(255,255,255,0.8);">Mentions légales</a> | <a href="#" style="color: rgba(255,255,255,0.8);">Politique de confidentialité</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Données des produits cosmétiques (prix en CAD$)
+        const products = [
+            {
+                id: 1,
+                name: "Perruque Naturelle Afro",
+                category: "hair",
+                description: "Perruque synthétique haute qualité, texture naturelle afro, ajustable pour un confort optimal.",
+                price: 89.99,
+                originalPrice: 119.99,
+                rating: 5,
+                badge: "sale",
+                icon: "fas fa-user"
+            },
+            {
+                id: 2,
+                name: "Mèches pour Tresses",
+                category: "hair",
+                description: "Mèches synthétiques pour box braids, longueur 24 pouces, 5 couleurs disponibles.",
+                price: 24.99,
+                originalPrice: null,
+                rating: 4,
+                badge: "best",
+                icon: "fas fa-braille"
+            },
+            {
+                id: 3,
+                name: "Shampooing Réparateur",
+                category: "hair",
+                description: "Shampooing sans sulfates avec karité et huile d'argan, pour cheveux secs et abîmés.",
+                price: 18.50,
+                originalPrice: null,
+                rating: 5,
+                badge: null,
+                icon: "fas fa-shower"
+            },
+            {
+                id: 4,
+                name: "Sérum Éclat Vitaminé",
+                category: "skincare",
+                description: "Sérum visage avec vitamine C et acide hyaluronique, unifie le teint et réduit les taches.",
+                price: 42.99,
+                originalPrice: 55.00,
+                rating: 5,
+                badge: "sale",
+                icon: "fas fa-gem"
+            },
+            {
+                id: 5,
+                name: "Crème Hydratante Visage",
+                category: "skincare",
+                description: "Crème légère non comédogène, hydratation 24h, adaptée à tous les types de peau.",
+                price: 32.50,
+                originalPrice: null,
+                rating: 4,
+                badge: null,
+                icon: "fas fa-spa"
+            },
+            {
+                id: 6,
+                name: "Fond de Teint Haute Couvrance",
+                category: "makeup",
+                description: "Fond de teint longue tenue, couvrance moyenne à élevée, 15 nuances disponibles.",
+                price: 39.99,
+                originalPrice: null,
+                rating: 5,
+                badge: "new",
+                icon: "fas fa-palette"
+            },
+            {
+                id: 7,
+                name: "Rouge à Lèvres Liquide Mat",
+                category: "makeup",
+                description: "Rouge à lèvres longue tenue, finition mate, ne dessèche pas les lèvres.",
+                price: 22.99,
+                originalPrice: null,
+                rating: 4,
+                badge: null,
+                icon: "fas fa-kiss-wink-heart"
+            },
+            {
+                id: 8,
+                name: "Palette Fards à Paupières",
+                category: "makeup",
+                description: "12 nuances neutres et smokey, pigments intenses, tenue toute la journée.",
+                price: 45.99,
+                originalPrice: 59.99,
+                rating: 5,
+                badge: "sale",
+                icon: "fas fa-eye"
+            },
+            {
+                id: 9,
+                name: "Parfum Oud Imperial",
+                category: "perfume",
+                description: "Fragrance orientale aux notes de oud, rose et bois de santal, 100ml.",
+                price: 89.99,
+                originalPrice: null,
+                rating: 5,
+                badge: "best",
+                icon: "fas fa-wine-bottle"
+            },
+            {
+                id: 10,
+                name: "Set de Pinceaux Professionnels",
+                category: "accessories",
+                description: "10 pinceaux en poils synthétiques de qualité professionnelle, étui inclus.",
+                price: 65.50,
+                originalPrice: 85.00,
+                rating: 5,
+                badge: "sale",
+                icon: "fas fa-paint-brush"
+            },
+            {
+                id: 11,
+                name: "Miroir Magnifiant LED",
+                category: "accessories",
+                description: "Miroir de maquillage avec éclairage LED réglable, grossissement 10x, rechargeable.",
+                price: 59.99,
+                originalPrice: null,
+                rating: 4,
+                badge: "new",
+                icon: "fas fa-mirror"
+            },
+            {
+                id: 12,
+                name: "Huile Capillaire Fortifiante",
+                category: "hair",
+                description: "Huile légère aux huiles de ricin et jojoba, stimule la pousse et réduit la casse.",
+                price: 28.75,
+                originalPrice: null,
+                rating: 5,
+                badge: null,
+                icon: "fas fa-oil-can"
+            }
+        ];
+
+        // Panier
+        let cart = [];
+        let cartTotal = 0;
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            setupEventListeners();
+            setupScrollAnimations();
+            
+            // Bouton "Voir les produits"
+            document.getElementById('cta-shop').addEventListener('click', function() {
+                document.querySelector('.product-grid').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Bouton "Nous trouver"
+            document.getElementById('cta-location').addEventListener('click', function() {
+                window.open('https://www.google.com/maps?q=7373+Boul+Langelier,+Saint-Léonard,+QC+H1S+1V7', '_blank');
+            });
+            
+            // Footer links
+            document.querySelectorAll('.footer-section a[data-filter]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const filter = this.getAttribute('data-filter');
+                    filterProducts(filter);
+                    
+                    // Mettre à jour les filtres actifs
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('data-filter') === filter) {
+                            btn.classList.add('active');
+                        }
+                    });
+                    
+                    // Scroll vers les produits
+                    document.querySelector('.product-grid').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+
+        // Rendu des produits
+        function renderProducts() {
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card reveal';
+                productCard.setAttribute('data-category', product.category);
+                
+                let badgeHTML = '';
+                if (product.badge) {
+                    const badgeText = product.badge === 'new' ? 'Nouveau' : 
+                                    product.badge === 'sale' ? 'Promo' : 
+                                    'Best';
+                    badgeHTML = `<span class="product-badge ${product.badge}">${badgeText}</span>`;
+                }
+                
+                let originalPriceHTML = '';
+                if (product.originalPrice) {
+                    originalPriceHTML = `<span class="original-price">${product.originalPrice.toFixed(2)}</span>`;
+                }
+                
+                productCard.innerHTML = `
+                    ${badgeHTML}
+                    <div class="product-image">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">${getCategoryName(product.category)}</span>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-rating">
+                            ${getRatingStars(product.rating)}
+                        </div>
+                        <div class="product-price">
+                            <div>
+                                ${originalPriceHTML}
+                                <span class="price">${product.price.toFixed(2)}</span>
+                            </div>
+                            <button class="add-to-cart" data-id="${product.id}">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                productGrid.appendChild(productCard);
+                
+                // Ajouter l'événement pour voir les détails
+                productCard.addEventListener('click', function(e) {
+                    if (!e.target.closest('.add-to-cart')) {
+                        openProductModal(product.id);
+                    }
+                });
+            });
+            
+            // Ajouter les événements aux boutons "Ajouter au panier"
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    addToCart(productId);
+                });
+            });
+        }
+
+        // Obtenir le nom de la catégorie
+        function getCategoryName(category) {
+            const categories = {
+                'makeup': 'MAQUILLAGE',
+                'skincare': 'SOINS VISAGE',
+                'hair': 'SOINS CHEVEUX',
+                'perfume': 'PARFUMS',
+                'accessories': 'ACCESSOIRES'
+            };
+            return categories[category] || category.toUpperCase();
+        }
+
+        // Générer les étoiles de notation
+        function getRatingStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        // Ouvrir le modal produit
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const modalContent = document.getElementById('modal-content');
+            
+            let originalPriceHTML = '';
+            if (product.originalPrice) {
+                originalPriceHTML = `<p class="original-price" style="font-size: 1.2rem; display: inline-block; margin-right: 10px;">${product.originalPrice.toFixed(2)}</p>`;
+            }
+            
+            modalContent.innerHTML = `
+                <div class="modal-image">
+                    <i class="${product.icon}"></i>
+                </div>
+                <div class="modal-details">
+                    <span class="product-category">${getCategoryName(product.category)}</span>
+                    <h3>${product.name}</h3>
+                    <div class="modal-price">
+                        ${originalPriceHTML}
+                        <span>${product.price.toFixed(2)}</span>
+                    </div>
+                    <div class="product-rating" style="margin-bottom: 20px;">
+                        ${getRatingStars(product.rating)} <span style="color: var(--text-soft); font-size: 0.9rem;">(${Math.floor(Math.random() * 50) + 10} avis)</span>
+                    </div>
+                    <p class="modal-description">${product.description}<br><br>
+                    <strong>Caractéristiques :</strong> Sans parabènes, sans sulfates, non testé sur les animaux. Fabriqué au Canada.<br><br>
+                    <strong>Conseil d'utilisation :</strong> Appliquer sur une peau propre et sèche. Masser délicatement jusqu'à absorption complète.</p>
+                    
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" id="decrease-qty">-</button>
+                        <span class="quantity" id="product-quantity">1</span>
+                        <button class="quantity-btn" id="increase-qty">+</button>
+                        <span style="margin-left: 20px; color: var(--text-soft); font-size: 0.9rem;">En stock: ${Math.floor(Math.random() * 30) + 5} unités</span>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" id="add-to-cart-modal" style="flex: 2;">
+                            <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                        </button>
+                        <button class="btn btn-secondary" style="flex: 1;">
+                            <i class="far fa-heart"></i> Favoris
+                        </button>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border);">
+                        <p style="font-size: 0.9rem; color: var(--text-soft);">
+                            <i class="fas fa-truck" style="margin-right: 10px;"></i> Livraison gratuite à Montréal à partir de 50$<br>
+                            <i class="fas fa-store" style="margin-right: 10px;"></i> Retrait en magasin disponible<br>
+                            <i class="fas fa-shield-alt" style="margin-right: 10px;"></i> Paiement 100% sécurisé
+                        </p>
+                    </div>
+                </div>
+            `;
+            
+            // Ouvrir le modal
+            document.getElementById('product-modal').classList.add('active');
+            
+            // Gérer la quantité
+            let quantity = 1;
+            document.getElementById('decrease-qty').addEventListener('click', function() {
+                if (quantity > 1) {
+                    quantity--;
+                    document.getElementById('product-quantity').textContent = quantity;
+                }
+            });
+            
+            document.getElementById('increase-qty').addEventListener('click', function() {
+                quantity++;
+                document.getElementById('product-quantity').textContent = quantity;
+            });
+            
+            // Ajouter au panier depuis le modal
+            document.getElementById('add-to-cart-modal').addEventListener('click', function() {
+                addToCart(productId, quantity);
+                closeModal();
+                showNotification(`${quantity} x ${product.name} ajouté au panier`);
+            });
+        }
+
+        // Ajouter au panier
+        function addToCart(productId, quantity = 1) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            // Vérifier si le produit est déjà dans le panier
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    icon: product.icon,
+                    quantity: quantity
+                });
+            }
+            
+            // Mettre à jour le panier
+            updateCart();
+            showNotification(`${quantity} x ${product.name} ajouté au panier`);
+        }
+
+        // Mettre à jour le panier
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.querySelector('.cart-count');
+            const cartTotalElement = document.getElementById('cart-total');
+            
+            // Calculer le total
+            cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            // Mettre à jour le compteur
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Mettre à jour le total
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+            
+            // Mettre à jour les articles
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: var(--text-soft); padding: 40px 0;">Votre panier est vide</p>';
+                return;
+            }
+            
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <i class="${item.icon}"></i>
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${item.price.toFixed(2)}</div>
+                        <div class="cart-item-actions">
+                            <button class="quantity-btn decrease-item" data-id="${item.id}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn increase-item" data-id="${item.id}">+</button>
+                            <button class="quantity-btn remove-item" data-id="${item.id}" style="margin-left: 20px; color: #f44336;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Ajouter les événements aux boutons du panier
+            document.querySelectorAll('.decrease-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    updateCartItem(id, -1);
+                });
+            });
+            
+            document.querySelectorAll('.increase-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    updateCartItem(id, 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    removeCartItem(id);
+                });
+            });
+        }
+
+        // Mettre à jour la quantité d'un article
+        function updateCartItem(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (!item) return;
+            
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                cart = cart.filter(item => item.id !== productId);
+            }
+            
+            updateCart();
+        }
+
+        // Supprimer un article du panier
+        function removeCartItem(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            showNotification('Produit retiré du panier');
+        }
+
+        // Afficher une notification
+        function showNotification(message) {
+            // Créer l'élément de notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, var(--secondary), var(--primary));
+                color: white;
+                padding: 15px 25px;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow-hover);
+                z-index: 3000;
+                animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+                max-width: 300px;
+                font-weight: 500;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Supprimer après 3 secondes
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+        }
+
+        // Fermer le modal
+        function closeModal() {
+            document.getElementById('product-modal').classList.remove('active');
+        }
+
+        // Configurer les événements
+        function setupEventListeners() {
+            // Filtres de produits
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    filterProducts(filter);
+                });
+            });
+            
+            // Ouvrir/fermer le panier
+            document.querySelector('.cart-icon').addEventListener('click', function() {
+                document.getElementById('cart-sidebar').classList.add('active');
+            });
+            
+            document.getElementById('close-cart').addEventListener('click', function() {
+                document.getElementById('cart-sidebar').classList.remove('active');
+            });
+            
+            // Fermer le modal produit
+            document.getElementById('close-modal').addEventListener('click', closeModal);
+            
+            // Fermer le modal en cliquant à l'extérieur
+            document.getElementById('product-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            
+            // Bouton de paiement
+            document.getElementById('checkout-btn').addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Votre panier est vide. Ajoutez des produits avant de commander.');
+                    return;
+                }
+                
+                const livraison = cartTotal >= 50 ? 0 : 9.99;
+                const totalAvecLivraison = cartTotal + livraison;
+                
+                alert(`Commande confirmée!\n\nTotal produits: $${cartTotal.toFixed(2)}\nLivraison: $${livraison.toFixed(2)}\nTotal: $${totalAvecLivraison.toFixed(2)}\n\nMerci pour votre achat chez Ma'Beauté Montréal!\n\nVous pouvez récupérer votre commande au:\n7373 Boul Langelier, Saint-Léonard`);
+                
+                cart = [];
+                updateCart();
+                document.getElementById('cart-sidebar').classList.remove('active');
+            });
+            
+            // Navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    filterProducts(targetId === 'new' ? 'all' : targetId);
+                    
+                    // Mettre à jour les filtres actifs
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('data-filter') === (targetId === 'new' ? 'all' : targetId)) {
+                            btn.classList.add('active');
+                        }
+                    });
+                    
+                    // Faire défiler jusqu'aux produits
+                    document.querySelector('.product-grid').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Filtrer les produits
+        function filterProducts(filter) {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else if (filter === 'new') {
+                    // Filtrer les produits avec badge "new"
+                    const badge = card.querySelector('.product-badge')?.classList.contains('new');
+                    card.style.display = badge ? 'block' : 'none';
+                } else {
+                    const category = card.getAttribute('data-category');
+                    card.style.display = (category === filter) ? 'block' : 'none';
+                }
+                
+                // Animation de révélation
+                if (card.style.display === 'block') {
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        // Configurer les animations au défilement
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // Styles CSS pour les animations de notification
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
